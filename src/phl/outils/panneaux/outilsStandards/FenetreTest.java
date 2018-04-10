@@ -18,7 +18,9 @@ public class FenetreTest extends JFrame
 		 Color cf = Color.GREEN;
 		 Color cenT = Color.lightGray;
 		 Color centfont = Color.red;
-		pan = new PanneauOutilsStandard(titre,cf,cenT,centfont);
+		 Color cboutex = Color.DARK_GRAY;
+		 Color cboufon = Color.RED;
+		pan = new PanneauOutilsStandard(titre,cf,cenT,centfont,cboufon,cboutex);
 		this.add(pan);
 	this.setVisible(true);
 	}

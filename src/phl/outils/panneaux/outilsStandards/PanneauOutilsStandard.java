@@ -2,8 +2,13 @@ package phl.outils.panneaux.outilsStandards;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -24,7 +29,7 @@ public class PanneauOutilsStandard  extends JPanel
 */
 {
 	// couleurs:sont initialisées par le constructeur
-	// peuvent être modifiéées pardessetters
+	// peuvent être modifiéées par des setters
 	// n'ont pas à êtrelues par des getters
 	private Color coulFond;          // couleur fond du panneau
 	private Color coulTextPP;        // couleur texte principal
@@ -32,31 +37,32 @@ public class PanneauOutilsStandard  extends JPanel
 	private Color coulPanText;       // couleur d'affichage du texte de la table
 	private Color coulEntete;        // couleur du fond de l'en tête de la table
 	private Color coulEnteteText;    // couleur du texte de l'en tête de la table
-	private Color coulBotonFond;     // couleur des boutons
+	private Color coulBoutonFond;     // couleur des boutons
 	private Color coulBoutonText;    // couleur du texte des boutons
 	
 	// Messages fixes, titres, etc. Pour internationaliser, mettre les messages
 			// dans une MessageFactory. Idée à creuser
 			
 	
-	private JLabel action1 = new JLabel("Entrez la valeur à ajouter ci dessous");
+	private JLabel action1 = new JLabel("Entrez la valeur à ajouter ci dessous:");
 	private JLabel action2 = new JLabel("Cliquez sur une entrée pour modifier le libellé");
-	/*
+	
 	private JLabel attention = new JLabel("Attention, s'agissant de tables annexes, avec contraintes d'intégrité,");
 	private JLabel attention2 = new JLabel("Il n'est pas possible de supprimer une entrée ici.");
-	private JLabel attention3 = new JLabel("Seul la modification d'un libellé ou l'insertion d'une");
-	private JLabel attention4 = new JLabel("sont possibles");
+	private JLabel attention3 = new JLabel("Seules la modification d'un libellé ou l'insertion d'une");
+	private JLabel attention4 = new JLabel("nouvelle valeur sont possibles");
 	// TODO il serait bon de remplacer ces 4 JLabel par un JText
-	 * je laisse pour garder le texte du JtexField suivant qui devra être initialisé dans le constructeur
-	 * */
+	
 	 
 	
 	// composants du panneau d'en tête:
 	
 	private JLabel titrePan = new JLabel();
 	private JPanel entetePan = new JPanel();
+	private JPanel actionPan = new JPanel();
+	private GridBagConstraints grilleCont = new GridBagConstraints();
 	
-	JTextField attention = new JTextField();
+//	JTextField attention = new JTextField();
 	
 
 			
@@ -66,18 +72,24 @@ public class PanneauOutilsStandard  extends JPanel
 	private JButtonOutils boutonAjout;     // initialisé dans une fonction privée spéciale
 	private JButtonOutils boutonRetour;    // Même remarque
 	
+	
 	     //  Menus: Il faut en mettre, c'est obligatoire
 			
 			// Champ de saisie
 	
-	private JTextArea champSaisie= new JTextArea();
+	private JTextField champSaisie= new JTextField();
 			
 			// Affichage tables
 	
 	private String[] titres = {"id","Nom"};
 	private Object [][] datas;
 	private JTable table;
+	private JPanel panTable = new JPanel();
 	
+	
+	// panneau bas pour le bouton de retour
+	
+	JPanel panBas = new JPanel();
 	
 	// Les differents Layout managers
 	BorderLayout topLayout;
@@ -87,14 +99,22 @@ public class PanneauOutilsStandard  extends JPanel
 	
 	public PanneauOutilsStandard(String titrePan,Color colFond,
 			                                   Color cenT,
-			                                   Color CentFont) 
+			                                   Color CentFont,
+			                                   Color cboufon,
+			                                   Color cboutex) 
 	{
 		// initialisation
 		
 		this.setBackground(colFond);
+		this.setSize(new Dimension(800,400));
+		
+		// couleurs:
+		this.coulEntete = cenT;
+		this.coulBoutonText=cboutex;
+		this.coulBoutonFond=cboufon;
 		
 		// Titre de la fenêtre
-		this.coulEntete = cenT;
+	
 		this.titrePan.setText(titrePan);
 		
 		Font font = new Font("Courier", Font.BOLD, 30);
@@ -104,11 +124,91 @@ public class PanneauOutilsStandard  extends JPanel
 		this.entetePan.setBackground(cenT);
 		this.entetePan.add(this.titrePan);
 		
+		// Panneau gauche: saisie
+		this.actionPan.setPreferredSize(new Dimension(400,400));
+		this.actionPan.setLayout(new GridBagLayout() );
+
 		
-		// Mise en place des cmposants au niveau hiérarchique supérieur:
+		this.grilleCont.gridx=0;
+		this.grilleCont.gridy=0;
+		this.grilleCont.gridheight=1;
+		this.grilleCont.gridwidth=6;
+		this.actionPan.add(this.action1,grilleCont);
+		this.grilleCont.gridwidth = GridBagConstraints.REMAINDER;
+		
+		this.grilleCont.gridx=0;
+		this.grilleCont.gridy=1;
+		this.grilleCont.gridheight=1;
+		this.grilleCont.gridwidth=4;
+		this.champSaisie.setBackground(Color.WHITE);
+		this.champSaisie.setSize(new Dimension(300,50));
+		this.champSaisie.setVisible(true);
+		Font f = new Font("Courier", Font.BOLD, 14);
+		this.champSaisie.setFont(f);
+		this.champSaisie.setPreferredSize(new Dimension(200,50));
+		this.actionPan.add(this.champSaisie,grilleCont);
+		
+		this.grilleCont.gridx=4;
+		this.grilleCont.gridy=1;
+		this.grilleCont.gridheight=1;
+		this.grilleCont.gridwidth=2;
+		this.boutonAjout = new JButtonOutils("Ajouter",100,50,this.coulBoutonFond);
+		this.boutonAjout.setForeground(this.coulBoutonText);
+		this.actionPan.add(this.boutonAjout,grilleCont);
+		this.grilleCont.gridwidth = GridBagConstraints.REMAINDER;
+		
+		this.grilleCont.gridx=0;
+		this.grilleCont.gridy=2;
+		this.grilleCont.gridheight=1;
+		this.grilleCont.gridwidth=6;
+		this.actionPan.add(this.attention,grilleCont);
+		this.grilleCont.gridwidth = GridBagConstraints.REMAINDER;
+		
+		
+		this.grilleCont.gridx=0;
+		this.grilleCont.gridy=3;
+		this.grilleCont.gridheight=1;
+		this.grilleCont.gridwidth=6;
+		this.actionPan.add(this.attention2,grilleCont);
+		this.grilleCont.gridwidth = GridBagConstraints.REMAINDER;
+	
+		this.grilleCont.gridx=0;
+		this.grilleCont.gridy=4;
+		this.grilleCont.gridheight=1;
+		this.grilleCont.gridwidth=6;
+		this.actionPan.add(this.attention3,grilleCont);
+		this.grilleCont.gridwidth = GridBagConstraints.REMAINDER;
+		
+		
+		this.grilleCont.gridx=0;
+		this.grilleCont.gridy=5;
+		this.grilleCont.gridheight=1;
+		this.grilleCont.gridwidth=6;
+		this.actionPan.add(this.attention4,grilleCont);
+		this.grilleCont.gridwidth = GridBagConstraints.REMAINDER;
+
+		// Panneau de droite: affichage de la table
+		// elle doit être passée en paramètres
+		
+		this.panTable.setBackground(Color.YELLOW);
+		this.panTable.setSize(new Dimension(400,300));
+		
+		// Panneau bas avec bouton de retour
+		
+		this.boutonRetour = new JButtonOutils("Quitter",100,50,this.coulBoutonFond);
+		this.boutonRetour.setForeground(this.coulBoutonText);
+		this.panBas.setBackground(Color.LIGHT_GRAY);
+		this.panBas.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		this.panBas.add(this.boutonRetour);
+		
+		
+		// Mise en place des composants au niveau hiérarchique supérieur:
 		topLayout = new BorderLayout();
 		this.setLayout(topLayout);
 		this.add(this.entetePan,BorderLayout.NORTH);
+		this.add(this.actionPan,BorderLayout.WEST);
+		this.add(this.panTable,BorderLayout.CENTER);
+		this.add(this.panBas,BorderLayout.SOUTH);
 		
 		
 
