@@ -15,7 +15,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class PanneauOutilsStandard  extends JPanel
+public abstract class PanneauOutilsStandard  extends JPanel
 
 /*
  * Cette classe est destinée à l'affichage des petites tables annexes, telles
@@ -24,6 +24,7 @@ public class PanneauOutilsStandard  extends JPanel
  * ajouter de nouvelles entrées. Leurs tailles étant finies,on n'a pas besoin
  * d'y venir souvent. (On peut travailler avec 20 couleurs de timbres par exemple
  * Il s'agit d'un panneau qui doit être intégré dans une fenêtre
+ * Il faudra dériver un panneau de celui-ci pour chaque table
  
 
 */
@@ -97,19 +98,32 @@ public class PanneauOutilsStandard  extends JPanel
 	
 	// Constructeur:
 	
-	public PanneauOutilsStandard(String titrePan,Color colFond,
-			                                   Color cenT,
-			                                   Color CentFont,
+	public PanneauOutilsStandard(String titrePan,
+			                                  Color colFond,
+			                                  Color coulTexPP,
+			                                  Color panTab,
+			                                  Color coulPanText,
+			                                  Color colEnt,
+			                                   Color colEntTex,
 			                                   Color cboufon,
 			                                   Color cboutex) 
+	
+	
+	
 	{
 		// initialisation
 		
-		this.setBackground(colFond);
+		this.coulFond=colFond;
+		this.coulTextPP = coulTextPP;
+		this.coulPanTab = coulPanTab;
+		this.coulPanText = coulPanText;
+		this.coulEntete = colEnt;
+		this.coulEnteteText = colEntTex;
+		this.setBackground(this.coulFond);
 		this.setSize(new Dimension(800,400));
 		
 		// couleurs:
-		this.coulEntete = cenT;
+		this.coulEntete = colEnt;
 		this.coulBoutonText=cboutex;
 		this.coulBoutonFond=cboufon;
 		
@@ -119,9 +133,9 @@ public class PanneauOutilsStandard  extends JPanel
 		
 		Font font = new Font("Courier", Font.BOLD, 30);
 		this.titrePan.setFont(font);	
-		this.titrePan.setForeground(CentFont);
+		this.titrePan.setForeground(this.coulPanText);
 		this.titrePan.setHorizontalAlignment(JLabel.CENTER);
-		this.entetePan.setBackground(cenT);
+		this.entetePan.setBackground(this.coulEntete);
 		this.entetePan.add(this.titrePan);
 		
 		// Panneau gauche: saisie
@@ -217,6 +231,7 @@ public class PanneauOutilsStandard  extends JPanel
 		// initialisation menus et boutons
 		initMenu();
 		initBoutons();
+		initTable();
 	}
 	
 	// getters et setters
@@ -257,15 +272,12 @@ public class PanneauOutilsStandard  extends JPanel
 	
 	// initialisation des boutons et menus
 	
-	private void initBoutons()
-	{
-		
-	}
+	protected abstract void initBoutons();
+	protected abstract void initMenu();
+	protected abstract void initTable();
 	
-	private void initMenu()
-	{
-		
-	}
+	
+	
 	
 	
 

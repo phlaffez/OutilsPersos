@@ -7,20 +7,25 @@ import javax.swing.JPanel;
 
 public class FenetreTest extends JFrame
 {
-	private PanneauOutilsStandard pan;
+	private outilsStandTest pan;
 
 	public FenetreTest()
 	{
 		this.setSize(800,600);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setLocationRelativeTo(null);  
-		 String titre = "Tests";
-		 Color cf = Color.GREEN;
-		 Color cenT = Color.lightGray;
+		 String titrePan = "Tests";
+		 Color colFond = Color.GREEN;
+		 Color colEnt = Color.lightGray; 
+		 Color coulTexPP= Color.black;
 		 Color centfont = Color.red;
 		 Color cboutex = Color.DARK_GRAY;
 		 Color cboufon = Color.RED;
-		pan = new PanneauOutilsStandard(titre,cf,cenT,centfont,cboufon,cboutex);
+		 Color panTab = Color.CYAN;
+		 Color coulPanText = Color.WHITE;
+		 Color colEntTex = Color.black;
+		pan = new outilsStandTest(titrePan,colFond,coulTexPP,panTab,coulPanText,colEnt,
+                colEntTex,cboufon,cboutex);
 		this.add(pan);
 	this.setVisible(true);
 	}
