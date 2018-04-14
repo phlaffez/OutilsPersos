@@ -81,11 +81,8 @@ public abstract class PanneauOutilsStandard  extends JPanel
 	private JTextField champSaisie= new JTextField();
 			
 			// Affichage tables
-	
-	private String[] titres = {"id","Nom"};
-	private Object [][] datas;
 	private JTable table;
-	private JPanel panTable = new JPanel();
+	protected JPanel panTable = new JPanel();
 	
 	
 	// panneau bas pour le bouton de retour
@@ -218,6 +215,7 @@ public abstract class PanneauOutilsStandard  extends JPanel
 		this.panBas.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		this.panBas.add(this.boutonRetour);
 		
+		this.initTable();      // affiche la table adequate
 		
 		// Mise en place des composants au niveau hiérarchique supérieur:
 		topLayout = new BorderLayout();
