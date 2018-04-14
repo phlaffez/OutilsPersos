@@ -147,6 +147,7 @@ public abstract class PanneauOutilsStandard  extends JPanel
 		this.grilleCont.gridy=0;
 		this.grilleCont.gridheight=1;
 		this.grilleCont.gridwidth=6;
+		this.grilleCont.anchor=GridBagConstraints.FIRST_LINE_START;
 		this.actionPan.add(this.action1,grilleCont);
 		this.grilleCont.gridwidth = GridBagConstraints.REMAINDER;
 		
@@ -155,7 +156,7 @@ public abstract class PanneauOutilsStandard  extends JPanel
 		this.grilleCont.gridheight=1;
 		this.grilleCont.gridwidth=4;
 		this.champSaisie.setBackground(Color.WHITE);
-		this.champSaisie.setSize(new Dimension(300,50));
+		this.champSaisie.setSize(new Dimension(300,40));
 		this.champSaisie.setVisible(true);
 		Font f = new Font("Courier", Font.BOLD, 14);
 		this.champSaisie.setFont(f);
@@ -166,7 +167,8 @@ public abstract class PanneauOutilsStandard  extends JPanel
 		this.grilleCont.gridy=1;
 		this.grilleCont.gridheight=1;
 		this.grilleCont.gridwidth=2;
-		this.boutonAjout = new JButtonOutils("Ajouter",100,50,this.coulBoutonFond);
+		this.grilleCont.anchor=GridBagConstraints.FIRST_LINE_END;
+		this.boutonAjout = new JButtonOutils("Ajouter",100,40,this.coulBoutonFond);
 		this.boutonAjout.setForeground(this.coulBoutonText);
 		this.actionPan.add(this.boutonAjout,grilleCont);
 		this.grilleCont.gridwidth = GridBagConstraints.REMAINDER;
@@ -175,6 +177,7 @@ public abstract class PanneauOutilsStandard  extends JPanel
 		this.grilleCont.gridy=2;
 		this.grilleCont.gridheight=1;
 		this.grilleCont.gridwidth=6;
+		this.grilleCont.anchor=GridBagConstraints.FIRST_LINE_START;
 		this.actionPan.add(this.attention,grilleCont);
 		this.grilleCont.gridwidth = GridBagConstraints.REMAINDER;
 		
