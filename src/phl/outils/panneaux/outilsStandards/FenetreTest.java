@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 public class FenetreTest extends JFrame
 {
-	private outilsStandTest pan;
+	private PanTableTestStandard pan;
 
 	public FenetreTest()
 	{
@@ -24,7 +24,7 @@ public class FenetreTest extends JFrame
 		 Color panTab = Color.CYAN;
 		 Color coulPanText = Color.WHITE;
 		 Color colEntTex = Color.black;
-		pan = new outilsStandTest(titrePan,colFond,coulTexPP,panTab,coulPanText,colEnt,
+		pan = new PanTableTestStandard(titrePan,colFond,coulTexPP,panTab,coulPanText,colEnt,
                 colEntTex,cboufon,cboutex);
 		this.add(pan);
 	this.setVisible(true);

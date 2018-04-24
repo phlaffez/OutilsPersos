@@ -126,7 +126,7 @@ public abstract class PanneauOutilsStandard  extends JPanel
 		this.coulBoutonText=cboutex;
 		this.coulBoutonFond=cboufon;
 		
-		// Titre de la fenêtre
+		// Titre du panneau
 	
 		this.titrePan.setText(titrePan);
 		
@@ -206,7 +206,7 @@ public abstract class PanneauOutilsStandard  extends JPanel
 		// Panneau de droite: affichage de la table
 		// elle doit être passée en paramètres
 		
-		this.panTable.setBackground(Color.YELLOW);
+		this.panTable.setBackground(this.coulPanTab);
 		this.panTable.setSize(new Dimension(400,300));
 		
 		// Panneau bas avec bouton de retour
