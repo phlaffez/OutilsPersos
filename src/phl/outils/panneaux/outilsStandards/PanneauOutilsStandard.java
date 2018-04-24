@@ -7,6 +7,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -34,7 +36,7 @@ public abstract class PanneauOutilsStandard  extends JPanel
 	// n'ont pas à êtrelues par des getters
 	private Color coulFond;          // couleur fond du panneau
 	private Color coulTextPP;        // couleur texte principal
-	private Color coulPanTab;        // couleur de fond du panneau d'affichage de la table
+	protected Color coulPanTab;        // couleur de fond du panneau d'affichage de la table
 	private Color coulPanText;       // couleur d'affichage du texte de la table
 	private Color coulEntete;        // couleur du fond de l'en tête de la table
 	private Color coulEnteteText;    // couleur du texte de l'en tête de la table
@@ -70,18 +72,18 @@ public abstract class PanneauOutilsStandard  extends JPanel
 			
 			// Boutons
 	
-	private JButtonOutils boutonAjout;     // initialisé dans une fonction privée spéciale
-	private JButtonOutils boutonRetour;    // Même remarque
+	protected JButtonOutils boutonAjout;     // initialisé dans une fonction privée spéciale
+	protected JButtonOutils boutonRetour;    // Même remarque
 	
 	
 	     //  Menus: Il faut en mettre, c'est obligatoire
 			
 			// Champ de saisie
 	
-	private JTextField champSaisie= new JTextField();
+	protected JTextField champSaisie= new JTextField();
 			
 			// Affichage tables
-	private JTable table;
+	protected JTable table;
 	protected JPanel panTable = new JPanel();
 	
 	
@@ -98,7 +100,7 @@ public abstract class PanneauOutilsStandard  extends JPanel
 	public PanneauOutilsStandard(String titrePan,
 			                                  Color colFond,
 			                                  Color coulTexPP,
-			                                  Color panTab,
+			                                  Color coulPanTab,
 			                                  Color coulPanText,
 			                                  Color colEnt,
 			                                   Color colEntTex,
@@ -232,7 +234,6 @@ public abstract class PanneauOutilsStandard  extends JPanel
 		// initialisation menus et boutons
 		initMenu();
 		initBoutons();
-		initTable();
 	}
 	
 	// getters et setters
@@ -276,10 +277,6 @@ public abstract class PanneauOutilsStandard  extends JPanel
 	protected abstract void initBoutons();
 	protected abstract void initMenu();
 	protected abstract void initTable();
-	
-	
-	
-	
-	
+
 
 }
