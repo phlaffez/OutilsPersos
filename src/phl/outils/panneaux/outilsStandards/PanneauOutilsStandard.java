@@ -54,7 +54,6 @@ public abstract class PanneauOutilsStandard  extends JPanel
 	private JLabel attention2 = new JLabel("Il n'est pas possible de supprimer une entrée ici.");
 	private JLabel attention3 = new JLabel("Seules la modification d'un libellé ou l'insertion d'une");
 	private JLabel attention4 = new JLabel("nouvelle valeur sont possibles");
-	// TODO il serait bon de remplacer ces 4 JLabel par un JText
 	
 	 
 	
@@ -64,9 +63,6 @@ public abstract class PanneauOutilsStandard  extends JPanel
 	private JPanel entetePan = new JPanel();
 	private JPanel actionPan = new JPanel();
 	private GridBagConstraints grilleCont = new GridBagConstraints();
-	
-//	JTextField attention = new JTextField();
-	
 
 			
 			
