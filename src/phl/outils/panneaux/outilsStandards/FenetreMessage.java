@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class FenetreMessage extends JFrame{
@@ -24,7 +25,7 @@ public class FenetreMessage extends JFrame{
 	
 	// message:
 	private String msg;
-	private JTextField jtf = new JTextField();
+	private JTextArea jtf = new JTextArea();
 	
 	private JPanel jp=new JPanel();
 	private JButtonOutils bOK = new JButtonOutils("OK",100,50,  Color.RED);	
