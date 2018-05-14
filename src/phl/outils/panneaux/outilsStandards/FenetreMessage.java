@@ -89,11 +89,10 @@ class  OkListener implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		System.out.println("Appui bouton OK");
-
+		dispose();
 		
 	}
-	
+	  
 }
 
 }
