@@ -167,6 +167,8 @@ BorderLayout topLayout;
 		protected abstract void initMenu();
 		protected abstract void initTable();
 		
+
+		
 		// getters et setters
 		// pas nécessaire de mettre des getters et setters pour toutes les variables
 		// Il faut modifier pour une prise en compte effective des changements de couleur
