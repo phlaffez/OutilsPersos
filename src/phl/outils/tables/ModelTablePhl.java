@@ -67,6 +67,10 @@ public class ModelTablePhl extends AbstractTableModel{
 	      temp = null;
 	      //Cette méthode permet d'avertir le tableau que les données
 	      //ont été modifiées, ce qui permet une mise à jour complète du tableau
+	      this.fireTableDataChanged();
+	      System.out.println("addrow");
+	      
+	      
 	      
 	   }
 	      
