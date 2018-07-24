@@ -68,9 +68,6 @@ public class ModelTablePhl extends AbstractTableModel{
 	      //Cette méthode permet d'avertir le tableau que les données
 	      //ont été modifiées, ce qui permet une mise à jour complète du tableau
 	      this.fireTableDataChanged();
-	      System.out.println("addrow");
-	      
-	      
 	      
 	   }
 	      
@@ -96,7 +93,6 @@ public class ModelTablePhl extends AbstractTableModel{
 	          //Cette méthode permet d'avertir le tableau que les données
 	          //ont été modifiées, ce qui permet une mise à jour complète du tableau
 	          this.fireTableDataChanged();
-	      this.fireTableDataChanged();
 	   }
 	      
 	    //Retourne le titre de la colonne à l'indice spécifié
