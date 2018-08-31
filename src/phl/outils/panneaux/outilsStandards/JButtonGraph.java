@@ -20,7 +20,7 @@ public class JButtonGraph extends JButton
 		this.setPreferredSize(new Dimension(width, height));              
 		this.setBackground(couleur);
 		Font police = new Font("Tahoma", Font.BOLD, 14);
-//		this..setBounds(new Rectangle(218, 21, 129, 33));  dans l'exemple
+//		this..setBounds(new Rectangle(218, 21, 129, 33));  dans l'exemple du net
 		this.setFont(police);
 		this.setIcon(new ImageIcon(icon));
 	}
